@@ -1,0 +1,43 @@
+.textLeft {
+	text-align: left !important;
+}
+
+.textRight {
+	text-align: right !important;
+}
+
+.buildSpot .targetedImages {
+	top: -45px !important;
+}
+
+.ui-selectmenu {
+	font-size: .7em !important;
+}
+
+.ui-selectmenu-menu {
+	z-index: 600 !important;
+}
+
+#gameListing tr:hover {
+	background-image: url(../images/lightBackgroundRed.png);
+}
+
+.joinGame:hover {
+	background-image: url(../images/lighterBackground.png);
+	color: #FF0000 !important;
+	cursor: pointer;
+}
+
+#startNewPubGame:hover {
+	color: #FF0000 !important;
+	cursor: pointer;
+}
+
+#startNewPrvGame:hover {
+	color: #FF0000 !important;
+	cursor: pointer;
+}
+
+#leaveGameForGood {
+	cursor: pointer;
+}

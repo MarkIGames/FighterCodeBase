@@ -1,0 +1,130 @@
+nav-button:hover {
+		background-color: #CCCCCC;
+		color: #166a2f;
+	}
+	
+#navigation-menu  {
+		height: 300px;
+	}
+
+#main-body {
+		height: 407px;
+	}
+	
+#header p {
+		height: 100px;
+		-webkit-margin-before: 0.75em
+	}	
+	
+#footer p {
+		height: 50px;
+		-webkit-margin-after: 0.75em
+	}		
+
+.nav-button {
+		height: 35px;
+	}
+	
+#nav-first {
+		-webkit-margin-before: 1em !important;
+	}
+	
+#gameWindow {
+		height: 200px;
+	}	
+	
+#chatWindow {
+		height: 200px;
+	}	
+	
+#largeChatWindow {
+		height: 422px;
+	}	
+	
+#dataHolder1 {
+		display: none;
+		height: 0px;
+		width: 0px;
+	}
+	
+#dataHolder2 {
+		display: none;
+		height: 0px;
+		width: 0px;
+	}	
+	
+.nav-button:hover {
+		color: #FF0000;
+	}
+
+.playerDivClass	{
+		margin-top: 10px;
+		height: 38%;
+		background-image: url(../images/lightBackground.png);
+		border:1px solid #0388AE;
+		padding:10px; 
+		overflow: auto;
+		color: #66CCFF;
+	}
+	
+#playerGridSpacer {
+		height: 5%;
+	}	
+	
+.shipSelection {
+		width: 100px;
+		height: 100px;
+		text-align: center;
+	}	
+	
+.shipTitle {
+		text-align: center;
+		color: #66CCFF;
+	}		
+	
+#newGameWindow {
+		height: 92%;
+		padding:10px; 
+		color: #66CCFF;
+		overflow-y: scroll;
+	}
+	
+#gameListing td {
+	border: 1px solid #0388AE;
+	color: #FFCC33;	
+}
+
+.zebraOn {
+	background-image: url(../images/lightBackground.png);
+}
+
+.zebraBackground {
+	background-image: url(../images/lightBackgroundRed.png);
+}
+
+#gameListing {
+		height: 600px;
+		background-image: url(../images/lightBackground.png);
+		border:1px solid #0388AE;
+		padding:10px; 
+		overflow: auto;
+		color: #66CCFF;
+	}	
+	
+#newGameForm {
+		height: 600px;
+		background-image: url(../images/lightBackground.png);
+		border:1px solid #0388AE;
+		padding:10px; 
+		overflow: auto;
+		color: #66CCFF;
+	}	
+	
+#fleetSetupWindow {
+		height: 85%;
+		background-image: url(../images/lightBackground.png);
+		border:1px solid #0388AE;
+		padding:10px; 
+		overflow: auto;
+		color: #66CCFF;
+	}	

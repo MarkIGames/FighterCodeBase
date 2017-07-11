@@ -1,0 +1,350 @@
+	.statTitle {
+		text-align: right;
+		color:#66CCFF;
+	}
+	
+	.statTitle2 {
+		text-align: center;
+		color:#66CCFF;
+	}	
+	
+	.changingValues {
+		color:#FFCC33;
+	}
+
+		
+	#gameStats {
+		margin-top: 20px;
+		background-image:url(../images/lightBackground.png);
+		border: 1px solid #0388AE;
+		height: 100%;
+	}	
+
+#copyFooter {
+		position: absolute;
+		bottom: 15px;
+		right: 15px;
+		text-align: right;
+		font-size: x-small;
+		width: 250px;
+		height: 55px;
+		color: #FFFFFF;
+	}
+	
+#footerLeftOffset {
+		position: absolute;
+		left: 15px;
+	}
+
+#footerRightOffset {
+		position: absolute;
+		right: 0px;
+		top: 2px;
+	}
+
+.footerGameOverride {
+	z-index: 9999;
+}
+
+.mbutton {
+	font-size:12px !important;
+	width: 150px;
+}
+
+.sbutton {
+	font-size:12px !important;
+	width: 80px;
+}
+
+.fbutton {
+	font-size:12px !important;
+}
+
+.hideThisDiv {
+	display: none;
+	visibility: hidden;
+}
+
+#credits1 {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+	color: #66CCFF;
+	font-size:10px;
+}
+
+#credits2 {
+	position: absolute;
+	bottom: 5px;
+	left: 200px;
+	color: #66CCFF;
+	font-size:10px;
+}
+
+#innerStory label {
+	color: #FFCC33 !important;
+}
+	
+.creditTitle {
+	font-weight:bold;
+	color: #FFCC33;
+}
+
+#innerStory {
+		color: #FFFFFF !important;
+		left-margin: 50%;
+		left: 143px;
+		position: absolute;
+		top: 15px;
+	}
+
+.storyBox {
+		color: #66CCFF;
+		height: 50px;
+		width: 400px;
+		position: absolute;
+		font-weight: bold;
+		font-size:18px;
+	}
+
+#box1 {
+		left: 100px;
+		top: 150px;
+	}
+
+#box2 {
+		right: 100px;
+		top: 300px;
+		text-align: right;
+	}
+
+#box3 {
+		left: 100px;
+		bottom: 500px;
+	}
+
+#box4 {
+		right: 100px;
+		bottom: 400px;
+		text-align: right;
+	}
+	
+#box5 {
+		right: 100px;
+		bottom: 200px;
+		text-align: right;
+	}	
+
+#loginBox {
+		height: 100%;
+		width: 100%;
+	display: inline-block;
+		background-image:url(../images/lightBackground.png);;
+		border: 4px solid #66CCFF;
+		text-align: center;
+	}	
+
+#registerBox {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	background-image:url(../images/lightBackground.png);;
+	border: 4px solid #66CCFF;
+	text-align: center;
+	top: 190px;
+	height: 280px;
+}	
+	
+	
+.starBack {
+		background-image:url('../images/starfield.png');
+		background-repeat:repeat;
+		color: #FFFFFF;
+	}
+
+#centerBox #systemTitle {
+		background-image:url('../images/star.png');
+		background-repeat:no-repeat;
+		background-position:center;
+		background-size: contain;
+	}
+	
+.buttonTitle {
+	position: relative;
+	top: 6px;
+}	
+	
+.title1 {
+		font-weight:bold;
+		font-style:italic;
+		font-size:36px;
+		color: #FFFFFF;
+		font-family: 'Russo One', sans-serif !important;
+		text-shadow: 2px 2px 3px #010101;
+	}	
+	
+.title2 {
+		font-weight:bold;
+		font-style:italic;
+		font-size:36px;
+		color: #FF0000;
+		font-family: 'Russo One', sans-serif !important;
+		text-shadow: 2px 2px 3px #010101;
+	}
+
+#centerBox {
+		margin-left: 50%;
+		margin-top: 25%;
+		position: absolute;
+		top: -300px;
+		left: -300px;
+		height: 100px;
+		min-width: 567px;
+	}
+
+.text-centering {
+		text-align: center;
+	}
+
+.thinBlackBorder { 
+		border: 1px solid black; 
+	}
+
+.smallFontSize {
+		font-size: small; margin: auto;
+	}
+
+.allRoundedCornersOuter {
+		-moz-border-radius: 35px;
+		border-radius: 35px;
+	}
+
+.allRoundedCorners {
+		-moz-border-radius: 25px;
+		border-radius: 25px;
+	}
+
+.bottomRoundedCorners {
+		-moz-border-radius-bottomright: 25px;
+		border-bottom-right-radius: 25px;
+		-moz-border-radius-bottomleft: 25px;
+		border-bottom-left-radius: 25px;
+	}
+	
+.topRoundedCorners {
+		-moz-border-radius-topright: 25px;
+		border-top-right-radius: 25px;
+		-moz-border-radius-topleft: 25px;
+		border-top-left-radius: 25px;
+	}	
+	
+.clearSpacing {
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;	
+	}
+
+.oneThirdTopSpacing {
+		-webkit-margin-before: 0.75em;
+	}
+
+.clearTopSpacing {
+		-webkit-margin-before: 0em;
+	}
+	
+.clearBottomSpacing {
+		-webkit-margin-after: 0em;	
+	}	
+
+.clearHalfTopSpacing {
+		-webkit-margin-before: 0.25em;
+	}
+	
+.clearHalfBottomSpacing {
+		-webkit-margin-after: 0.25em;	
+	}	
+
+.clearHalfSpacing {
+		-webkit-margin-before: 0.25em;
+		-webkit-margin-after: 0.25em;	
+	}
+
+.innerWidthAdjustment {
+		 margin-left: 0% !important;
+		 margin-right: 0% !important;
+		 width: 100% !important;	
+	}
+
+a:link 		{ color: #0099FF; text-decoration: none }
+a:active 	{ color: #0066CC; text-decoration: none }
+a:visited	{ color: #0066CC; text-decoration: none }
+a:hover 	{ color: #0099FF; text-decoration: none }
+
+body { 
+		background-color: #fff; 
+		font-family: 'Russo One', sans-serif !important;
+	}
+
+p .title1 {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 50%;
+}
+
+p .title2 {
+
+}
+
+.container { 
+ 
+	}
+
+.container div p { 
+		background-image: url(../images/lightBackground.png);
+	}
+
+div p { 
+		border:1px solid #0388AE; 
+		color: #FFCC33;
+	}
+
+h2 { 
+		color:#fff; 
+	}
+
+#topBarImage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 250px;
+	width: 1920px;
+	background-image: url(../images/topBarBack.png);
+}
+
+#logoBox {
+	position: absolute;
+	left: -15px;
+	top: 40px;
+	height: 125px;
+	width: 710px;
+	background-image: url(../images/pmLogo.png);
+}
+	
+.gameMenuButton:hover {
+	color: #FF0000;
+	cursor: pointer;
+}
+
+#navigationMenu {
+	font-family: 'Russo One', sans-serif !important;
+			font-weight:bold;
+		font-style:italic;
+	position: absolute;
+	left: 50px;
+	top: 250px;
+	font-size: 2em;
+}
+
+#topHeader {
+	overflow: hidden;
+}

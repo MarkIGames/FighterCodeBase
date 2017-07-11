@@ -1,0 +1,178 @@
+#cockpitBackground {
+	background-image: url("../images/cockpitOverlay.png");
+	height: 972px;
+	width: 1131px;
+	position: absolute;
+	bottom: -2px;
+	left: 50%;
+	margin-left: -565.5px;
+}
+
+#hud {
+	/*
+	height: 300px;
+    width: 300px;
+
+	border-left: thick outset #39FF14;
+	border-right: thick outset #39FF14;
+    display: block;
+    position: absolute;
+    top: 20%;
+
+    padding: 5px;
+    z-index: 100;
+	left: 50%;
+	margin-left: -150px;
+	*/
+	
+	height: 378px;
+    width: 319px;
+    border-left: thick outset #39FF14;
+    border-right: thick outset #39FF14;
+    display: block;
+    position: absolute;
+    bottom: 522px;
+    padding: 5px;
+    z-index: 100;
+    left: 50%;
+    margin-left: -168px;
+}
+
+.hudElement {
+	color: #39FF14;
+}
+
+.activeElement {
+	border: 1px solid #39FF14 !important;
+}
+
+#name {
+	position: absolute;
+	left: 120px;
+	bottom: 10px;
+}
+
+#probeDistance {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 0px;
+	background-color: #39FF14;
+	opacity: 0.2;
+}
+
+#probeDistanceValueHolder {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 0px;
+	border: 1px solid #267340;
+}
+
+#dockOption {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 40px;
+	background-color: #39FF14;
+	opacity: 0.2;
+}
+
+#dockOptionHolder {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 40px;
+	border: 1px solid #267340;
+}
+
+.dockOptionValue1 {
+	position: absolute;
+	left: 50px;
+	top: 9px;
+}
+
+.dockOptionValue2 {
+	position: absolute;
+	left: 62px;
+	top: 9px;
+}
+
+#speedOption {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 80px;
+	background-color: #39FF14;
+	opacity: 0.2;
+}
+
+#speedOptionHolder {
+	height: 35px;
+	width: 200px;
+	position: absolute;
+	left: -215px;
+	top: 80px;
+	border: 1px solid #267340;
+}
+
+.speedOptionValue1 {
+	position: absolute;
+	left: 62px;
+	top: 9px;
+}
+
+.speedOptionValue2 {
+	position: absolute;
+	left: 65px;
+	top: 9px;
+}
+
+#weaponBox {
+    height: 117px;
+    width: 260px;
+    position: absolute;
+    left: 300px;
+    bottom: -135px;
+	background-color: #39FF14;
+	opacity: 0.2;
+}
+
+#weaponBoxHolder {
+    height: 117px;
+    width: 260px;
+    position: absolute;
+    left: 300px;
+    bottom: -135px;
+	border: 1px solid #267340;
+}
+
+#radarBox {
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	left: -230px;
+	top: 418px;
+	background-color: #39FF14;
+	opacity: 0.2;
+}
+
+#radarBoxHolder {
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	left: -230px;
+	top: 418px;
+	border: 1px solid #267340;
+}
+
+.radarObject {
+	position: absolute;
+	left: 62px;
+	top: 9px;
+}
