@@ -268,20 +268,7 @@ THREE.flightControls = function ( object, domElement ) {
 		});
 		
 		if(stick != null && throttle != null) {
-			
-			// Button list and gamepad list are 0 based
-			if(stick.buttons[0].pressed) { 
-				if(fireGunCount == 0) {
-					gameEngine.returnSystem( 'weaponManager' ).fireWeapon(delta);
-				}
-				
-				fireGunCount = fireGunCount + 1;
-				
-				if(fireGunCount > 18) {
-					fireGunCount = 0;
-				}
-			}
-	
+						
 			var sax1 = this.filter( stick.axes[ 1 ] );
 			var sax5 = this.filter( stick.axes[ 5 ] );
 			var sax0 = this.filter( stick.axes[ 0 ] );

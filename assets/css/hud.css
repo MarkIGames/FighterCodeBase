@@ -171,8 +171,24 @@
 	border: 1px solid #267340;
 }
 
+#radarViewRange {
+	position: absolute;
+	right: -25px;
+	top: 15px;
+}
+
+#radarViewTitle {
+	position: absolute;
+	right: -28px;
+	top: 5px;
+}
+
 .radarObject {
 	position: absolute;
 	left: 62px;
 	top: 9px;
+}
+
+.radarElement {
+	position: absolute;
 }

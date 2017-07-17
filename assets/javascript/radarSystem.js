@@ -2,6 +2,8 @@ function radarSystem() {
 
 	this.radarObjects = {};
 	var radarObjectCount = 0;
+	var radarRange = 400000;
+	var viewRadarRange = 40;
 	
 	this.initalize = function() {
 		// Do stuff here
@@ -11,6 +13,56 @@ function radarSystem() {
 		radarObjectCount = 0;
 		
 		this.checkInView();
+	}
+	
+	this.updateRadarRange = function( newRange ) {
+		if(radarRange == 50000) {
+			if(newRange == 'up') {
+				radarRange = 200000;
+				viewRadarRange = radarRange / 10000;
+				
+			}
+			
+			return true;
+		}
+
+		if(radarRange == 200000) {
+			if(newRange == 'up') {
+				radarRange = 400000;
+				viewRadarRange = radarRange / 10000;
+			} else {
+				radarRange = 50000;
+				viewRadarRange = radarRange / 10000;
+			}
+			
+			return true;
+		}
+	
+		if(radarRange == 400000) {
+			if(newRange == 'up') {
+				radarRange = 1200000;
+				viewRadarRange = radarRange / 10000;
+			} else {
+				radarRange = 200000;
+				viewRadarRange = radarRange / 10000;
+			}	
+			
+			return true;
+		}
+	
+		if(radarRange == 1200000) {
+			if(!(newRange == 'up')) {
+				radarRange = 400000;
+				viewRadarRange = radarRange / 10000;
+			}	
+			
+			return true;
+		}
+		
+	}
+	
+	this.getRadarViewRange = function() {
+		return viewRadarRange;
 	}
 	
 	this.checkInView = function() {
@@ -54,27 +106,36 @@ function radarSystem() {
 		var camera    = gameEngine.returnSystem( 'threejs' ).getCamera();
 		var objectPosition = shipArray[key].object.position;
 		
+
+		var cloneObject = shipArray[key].object.clone();
+		
+		cloneObject.applyMatrix( new THREE.Matrix4().getInverse( gameEngine.returnSystem('threejs').getCamera().matrixWorld ) );
+		
 		radarObjectCount = radarObjectCount + 1;
 		
 		var distance = distanceVector(camera.position, objectPosition);
 		
-		if(distance < 8000000) {
+		var radarMultiplier = 200 / radarRange;
+		
+		if(distance < radarRange) {
 			
-			var xPosition = distanceFormula(camera.position.x,camera.position.z,objectPosition.x,objectPosition.y)
-			
+			//var xPosition = distanceFormula(camera.position.x,camera.position.y,cloneObject.x,cloneObject.y)
+						
 			var radarObject = {};
 			radarObject.distance = distance;
 			
-			var xOffset = sideWaysTriangle( distance, xPosition )
+			//var xOffset = sideWaysTriangle( distance, xPosition )
+			//if( (55 + (cloneObject.position.x)) > 0 && (55 + (cloneObject.position.x)) < 152) {
+				radarObject.x        = 75 + (cloneObject.position.x * radarMultiplier);
+				radarObject.y        = (cloneObject.position.z * radarMultiplier) + 185;
+				radarObject.z        = (cloneObject.position.y * radarMultiplier);
+				radarObject.hull     = shipArray[key].hull;
+				console.log('X: ' + radarObject.x + ' Y: ' + radarObject.y);
 			
-			radarObject.x        = 100 - (xOffset / 40000);
-			radarObject.y        = 200 - (distance / 40000);
-			radarObject.hull     = shipArray[key].hull;
-		
-		
-		// New 0,0 = 100,200
-		
-			this.radarObjects[key] = radarObject;
+			// New 0,0 = 100,200
+			
+				this.radarObjects[key] = radarObject;
+			//}
 		}
 	}
 	

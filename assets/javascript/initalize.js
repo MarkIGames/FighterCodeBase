@@ -58,6 +58,11 @@ $(function() {
 	// Save it to the engine
 	gameEngine.addSystem( hudClassObject, 'hud' );
 	
+	// Setup the Game Class
+	var controlClassObject = new controlSystem();
+	// Save it to the engine
+	gameEngine.addSystem( controlClassObject, 'controls' );
+	
 	// Setup the Multiplayer Socket 
 	var socketClassObject = new socketPlayer();
 	// Save it to the Engine

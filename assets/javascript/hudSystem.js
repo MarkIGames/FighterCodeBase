@@ -21,18 +21,34 @@ function hudSystem() {
 	}
 	
 	function updateRadar() {
+		var viewRadar = gameEngine.returnSystem( 'radar' ).getRadarViewRange();
+		
+		$('#radarViewRange').html(viewRadar);
+		
 		var radarObjects = gameEngine.returnSystem( 'radar' ).returnRadarObjects();
+		
+		$( ".radarElement" ).removeClass('updated');
 		
 		$.each( radarObjects, function( key, object ) {
 			if($('#target_' + key + '')[0] == undefined) {
-				var newRadarDiv = '<div id="target_' + key + '">#</div>';
+				var newRadarDiv = '<div id="target_' + key + '" class="radarElement">#<span id="target_' + key + '_alt">' + object.z + '</span></div>';
 				$('#radarBoxHolder').append(newRadarDiv);
+				$( ".radarElement" ).addClass('updated');
 			} else {
+				console.log('X: ' + object.x + ' Y: ' + object.y);
 				$('#target_' + key + '').css({top: object.y, left: object.x, position:'absolute'});
+				$('#target_' + key + '_alt').html(object.z);
+				$( ".radarElement" ).addClass('updated');
 			}
-			$('#target_' + key + '').remove();
-			var newRadarDiv = '<div id="target_' + key + '">' + key + ': ' + object.hull + '</div>';
-			$('#radarBoxHolder').append(newRadarDiv);
+			//$('#target_' + key + '').remove();
+			//var newRadarDiv = '<div id="target_' + key + '">' + key + ': ' + object.hull + '</div>';
+			//$('#radarBoxHolder').append(newRadarDiv);
+		});
+		
+		$( ".radarElement" ).each(function( index ) {
+			if(!($( this ).hasClass('updated'))) {
+				$( this ).remove();
+			}
 		});
 	}
 	

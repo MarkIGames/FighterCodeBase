@@ -60,6 +60,7 @@
 	<script src="assets/javascript/weaponManager.js"></script>
 	<script src="assets/javascript/radarSystem.js"></script>
 	<script src="assets/javascript/hudSystem.js"></script>
+	<script src="assets/javascript/controlSystem.js"></script>
 	<script src="assets/javascript/lightTypes.js"></script>
 	<script src="assets/javascript/engine/engine.js"></script>
 	
