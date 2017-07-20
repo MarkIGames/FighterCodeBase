@@ -4,6 +4,7 @@ function controlSystem() {
 	var throttle = {};
 	var updateIterator = 0;
 	var updateTick     = 2;
+	var fireGunCount   = 0;
 	
 	this.initalize = function() {
 		var list     = navigator.getGamepads();
@@ -21,16 +22,19 @@ function controlSystem() {
 		});
 	}
 	
-	this.update = function() {
+	this.update = function( delta ) {
 		if(updateIterator == updateTick) {
-			checkButtons();
+			checkSlowButtons( delta );
+			checkFastButtons( delta );
 			updateIterator = 0;
 		} else {
+			checkFastButtons( delta );
 			updateIterator = updateIterator + 1;
 		}
+		checkFastButtons( delta );
 	}
 	
-	var checkButtons = function() {
+	var checkFastButtons = function( delta ) {
 		if(checkControlSetup()) {
 			// Button list and gamepad list are 0 based
 			if(stick.buttons[0].pressed) { 
@@ -44,7 +48,17 @@ function controlSystem() {
 					fireGunCount = 0;
 				}
 			}
+		}
+	}	
 	
+	var checkSlowButtons = function( delta ) {
+		if(checkControlSetup()) {
+			if(stick.buttons[10].pressed) { 
+				gameEngine.returnSystem( 'radar' ).changeLockType();
+				throttle.buttons[14].pressed = false;
+				throttle.buttons[14].value   = 0;
+			}
+			
 			if(throttle.buttons[23].pressed) { 
 				gameEngine.returnSystem( 'radar' ).updateRadarRange('up');
 				throttle.buttons[23].pressed = false;
@@ -56,9 +70,14 @@ function controlSystem() {
 				throttle.buttons[25].pressed = false;
 				throttle.buttons[25].value   = 0;
 			}
+			if(throttle.buttons[24].pressed) { 
+				gameEngine.returnSystem( 'radar' ).getNextTarget();
+				throttle.buttons[24].pressed = false;
+				throttle.buttons[24].value   = 0;
+			}
 		}
 	}
-	
+		
 	var checkControlSetup = function() {
 		if(stick != null && throttle != null) {
 			return true;

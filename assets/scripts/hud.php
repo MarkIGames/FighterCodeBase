@@ -39,8 +39,15 @@
 
 	<div id="radarBox" class="hudElement"></div>
 	<div id="radarBoxHolder" class="hudElement">
+
 		<div id="radarViewTitle">RNG</div>
 		<div id="radarViewRange">40</div>
+		
+		<div id="radarLockTitle">LCK</div>
+		<div id="radarLockActive">OFF</div>
+		
 	</div>
 	
 </div>
+
+<div id="tracking-overlay">&nbsp;</</div>

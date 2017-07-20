@@ -1,9 +1,11 @@
 function radarSystem() {
 
-	this.radarObjects = {};
+	this.radarObjects    = {};
 	var radarObjectCount = 0;
-	var radarRange = 400000;
-	var viewRadarRange = 40;
+	var radarRange       = 400000;
+	var viewRadarRange   = 40;
+	var lockState        = false;
+	var lockActive       = null;
 	
 	this.initalize = function() {
 		// Do stuff here
@@ -22,7 +24,7 @@ function radarSystem() {
 				viewRadarRange = radarRange / 10000;
 				
 			}
-			
+			gameEngine.returnSystem( 'hud' ).updateRadarRange(viewRadarRange);
 			return true;
 		}
 
@@ -34,7 +36,7 @@ function radarSystem() {
 				radarRange = 50000;
 				viewRadarRange = radarRange / 10000;
 			}
-			
+			gameEngine.returnSystem( 'hud' ).updateRadarRange(viewRadarRange);
 			return true;
 		}
 	
@@ -46,7 +48,7 @@ function radarSystem() {
 				radarRange = 200000;
 				viewRadarRange = radarRange / 10000;
 			}	
-			
+			gameEngine.returnSystem( 'hud' ).updateRadarRange(viewRadarRange);
 			return true;
 		}
 	
@@ -55,7 +57,7 @@ function radarSystem() {
 				radarRange = 400000;
 				viewRadarRange = radarRange / 10000;
 			}	
-			
+			gameEngine.returnSystem( 'hud' ).updateRadarRange(viewRadarRange);
 			return true;
 		}
 		
@@ -78,6 +80,8 @@ function radarSystem() {
 		var frustum = new THREE.Frustum();
 		frustum.setFromMatrix( new THREE.Matrix4().multiply( camera.projectionMatrix, camera.matrixWorldInverse ) );
 		
+		window.foundLock = false;
+		
 		$.each( shipArray, function( key, object ) {
 			if(key != shipId) {
 				object.object.updateMatrix(); // make sure plane's local matrix is updated
@@ -86,6 +90,10 @@ function radarSystem() {
 			}
 		});
 		
+		if(!window.foundLock) {
+			lockActive = null;
+			gameEngine.returnSystem( 'hud' ).hideTargetBox();
+		}
 		//console.log(this.returnRadarObjects());
 	}
 	
@@ -130,14 +138,67 @@ function radarSystem() {
 				radarObject.y        = (cloneObject.position.z * radarMultiplier) + 185;
 				radarObject.z        = (cloneObject.position.y * radarMultiplier);
 				radarObject.hull     = shipArray[key].hull;
-				console.log('X: ' + radarObject.x + ' Y: ' + radarObject.y);
+				radarObject.lock     = false;
+				//console.log('X: ' + radarObject.x + ' Y: ' + radarObject.y);
 			
-			// New 0,0 = 100,200
+				if(lockActive == key && lockState == true)  {
+					radarObject.lock = true;
+					lockActive = key;
+					window.foundLock = true;
+				}
+
+				// New 0,0 = 100,200
 			
 				this.radarObjects[key] = radarObject;
+				
+				if(lockActive == null) {
+					this.getNextTarget();
+				}
+								
 			//}
 		}
 	}
+	
+	this.getNextTarget = function() {
+		if(lockState) {
+			window.NextTarget = false;
+			
+			$.each( this.radarObjects, function( key, object ) {
+				if(window.NextTarget) {
+					lockActive = key;
+					//object.lock = true;
+					window.foundLock = true;
+				} else {
+					if(key == lockActive) {
+						lockActive = null;
+						//object.lock = false;
+						window.NextTarget = true;
+					}
+				}
+			});
+			window.NextTarget = true;
+			if(lockActive == null) {
+				$.each( this.radarObjects, function( key, object ) {
+					if(window.NextTarget) {
+						lockActive = key;
+						window.NextTarget = false;
+						window.foundLock = true;
+					}
+				});
+			}
+		}
+	}
+	
+	this.changeLockType = function() {
+		if(lockState == false) {
+			lockState = true;
+			gameEngine.returnSystem( 'hud' ).updateLockState('ON');
+		} else {
+			lockState = false;
+			gameEngine.returnSystem( 'hud' ).updateLockState('OFF');
+			lockActive = null;
+		}
+	}	
 	
 	this.cleanRadarObjects = function( key ) {
 		this.radarObjects = {};
@@ -147,4 +208,8 @@ function radarSystem() {
 		return this.radarObjects;
 	}
 
+	this.returnLockKey = function() {
+		return lockActive;
+	}
+	
 }

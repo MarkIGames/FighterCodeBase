@@ -16,7 +16,9 @@ function threeDee() {
 	var dirLight;
 	var textureLoader = new THREE.TextureLoader();
 	var clock         = new THREE.Clock();
+	var projector     = new THREE.Projector();
 	var delta;
+
 	
 	var cameraViewProjectionMatrix = new THREE.Matrix4();
 
@@ -133,6 +135,10 @@ function threeDee() {
 	
 	this.getCamera = function() {
 		return camera;
+	}
+	
+	this.getProjector = function() {
+		return projector;
 	}
 	
 	this.getDelta = function() {

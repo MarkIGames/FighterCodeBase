@@ -4,12 +4,14 @@ function hudSystem() {
 	
 	this.initalize = function() {
 		$('#shipId').html(shipId);
+		$('#tracking-overlay').hide();
 	}
 	
 	this.update = function() {
 		updateFuel();
 		updateRadar();
 		updateWeapons();
+		updateTrackingOverlay();
 	}
 	
 	function activateHudElement( element ) {
@@ -20,26 +22,32 @@ function hudSystem() {
 		$(element).removeClass('activeElement');
 	}
 	
-	function updateRadar() {
-		var viewRadar = gameEngine.returnSystem( 'radar' ).getRadarViewRange();
-		
-		$('#radarViewRange').html(viewRadar);
-		
+	function updateRadar() {		
 		var radarObjects = gameEngine.returnSystem( 'radar' ).returnRadarObjects();
 		
 		$( ".radarElement" ).removeClass('updated');
 		
 		$.each( radarObjects, function( key, object ) {
 			if($('#target_' + key + '')[0] == undefined) {
-				var newRadarDiv = '<div id="target_' + key + '" class="radarElement">#<span id="target_' + key + '_alt">' + object.z + '</span></div>';
+				var newRadarDiv = '<div id="target_' + key + '" class="radarElement">&#9633;<span id="target_' + key + '_alt">' + object.z + '</span></div>';
 				$('#radarBoxHolder').append(newRadarDiv);
 				$( ".radarElement" ).addClass('updated');
 			} else {
-				console.log('X: ' + object.x + ' Y: ' + object.y);
+				//console.log('X: ' + object.x + ' Y: ' + object.y);
 				$('#target_' + key + '').css({top: object.y, left: object.x, position:'absolute'});
 				$('#target_' + key + '_alt').html(object.z);
-				$( ".radarElement" ).addClass('updated');
+				$('#target_' + key + '').addClass('updated');
 			}
+			
+			if(object.lock == true) {
+				$('#target_' + key + '').addClass('locked');
+				$('#tracking-overlay').show();
+			} else {
+				if(!($( this ).hasClass('locked'))) {
+					$('#target_' + key + '').removeClass('locked');
+				}
+			}
+			
 			//$('#target_' + key + '').remove();
 			//var newRadarDiv = '<div id="target_' + key + '">' + key + ': ' + object.hull + '</div>';
 			//$('#radarBoxHolder').append(newRadarDiv);
@@ -51,6 +59,11 @@ function hudSystem() {
 			}
 		});
 	}
+	
+	this.hideTargetBox = function() {
+		$('#tracking-overlay').hide();
+	}
+	
 	
 	function updateFuel() {
 		var fuelObject = gameEngine.returnSystem( 'game' ).returnFuelObject();
@@ -181,6 +194,71 @@ function hudSystem() {
 			$('#speedOptionValue').removeClass('speedOptionValue2');
 		}	
 	
+	}
+	
+	var updateTrackingOverlay = function() {
+		var shipId = gameEngine.returnSystem( 'radar' ).returnLockKey();
+		
+		if(shipId != null) {
+		
+			object = gameEngine.returnSystem( 'game' ).returnShip( shipId );
+			
+			var camera    = gameEngine.returnSystem( 'threejs' ).getCamera();
+			var projector = gameEngine.returnSystem( 'threejs' ).getProjector();
+			
+			var $trackingOverlay = $('#tracking-overlay');
+			
+			var p, v, percX, percY, left, top;
+	
+			// this will give us position relative to the world
+			p = object.object.position.clone();
+	
+			// projectVector will translate position to 2d
+			v = p.project(camera);
+	
+			// translate our vector so that percX=0 represents
+			// the left edge, percX=1 is the right edge,
+			// percY=0 is the top edge, and percY=1 is the bottom edge.
+			percX = (v.x + 1) / 2;
+			percY = (-v.y + 1) / 2;
+	
+			// scale these values to our viewport size
+			left = percX * 1880;
+			top = percY * 1080;
+	
+			if(top < 0) {
+				top = 0;
+			}
+			
+			if(left < 0) {
+				left = 0;
+			}
+			
+			if(top > 980) {
+				top = 980;
+			}
+			
+			if(left > 1920) {
+				left = 1920;
+			}
+			
+			// position the overlay so that it's center is on top of
+			// the sphere we're tracking
+			$trackingOverlay
+			    .css('left', ((left - $trackingOverlay.width() / 2)) + 'px')
+			    .css('top', (top - $trackingOverlay.height() / 2) + 'px');
+		}
+	}
+	
+	this.updateLockState = function( value ) {
+		$('#radarLockActive').html( value );
+		if(value != 'ON') {
+			$('#tracking-overlay').hide();
+		}
+	}
+	
+	this.updateRadarRange = function( viewRadar ) {
+		$('#radarViewRange').html( viewRadar );
 	}
 	
 }

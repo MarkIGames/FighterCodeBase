@@ -1,11 +1,13 @@
 #cockpitBackground {
-	background-image: url("../images/cockpitOverlay.png");
-	height: 972px;
-	width: 1131px;
+	background-image: url("../images/cockpitOverlay2b.png");
+	height: 1080px;
+	width: 1920px;
 	position: absolute;
-	bottom: -2px;
+	bottom: 0px;
+	/*
 	left: 50%;
-	margin-left: -565.5px;
+	margin-left: -540px;
+	*/
 }
 
 #hud {
@@ -25,17 +27,17 @@
 	margin-left: -150px;
 	*/
 	
-	height: 378px;
-    width: 319px;
+    height: 446px;
+    width: 449px;
     border-left: thick outset #39FF14;
     border-right: thick outset #39FF14;
     display: block;
     position: absolute;
-    bottom: 522px;
+    bottom: 406px;
     padding: 5px;
     z-index: 100;
     left: 50%;
-    margin-left: -168px;
+    margin-left: -232px;
 }
 
 .hudElement {
@@ -137,27 +139,29 @@
     height: 117px;
     width: 260px;
     position: absolute;
-    left: 300px;
-    bottom: -135px;
+    left: 395px;
+    bottom: -152px;
+	/*
 	background-color: #39FF14;
 	opacity: 0.2;
+	*/
 }
 
 #weaponBoxHolder {
     height: 117px;
     width: 260px;
     position: absolute;
-    left: 300px;
-    bottom: -135px;
-	border: 1px solid #267340;
+    left: 395px;
+    bottom: -152px;
+	/*border: 1px solid #267340;*/
 }
 
 #radarBox {
 	height: 200px;
 	width: 200px;
 	position: absolute;
-	left: -230px;
-	top: 418px;
+	left: -200px;
+	top: 500px;
 	background-color: #39FF14;
 	opacity: 0.2;
 }
@@ -166,8 +170,8 @@
 	height: 200px;
 	width: 200px;
 	position: absolute;
-	left: -230px;
-	top: 418px;
+	left: -200px;
+	top: 500px;
 	border: 1px solid #267340;
 }
 
@@ -183,10 +187,35 @@
 	top: 5px;
 }
 
+#radarLockActive {
+	position: absolute;
+	right: -25px;
+	top: 45px;
+}
+
+#radarLockTitle {
+	position: absolute;
+	right: -28px;
+	top: 35px;
+}
+
 .radarObject {
 	position: absolute;
 	left: 62px;
 	top: 9px;
+}
+
+.locked {
+	color: #ffff00;
+}
+
+#tracking-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 36px;
+	height: 36px;
+	border: 1px solid #267340;
 }
 
 .radarElement {

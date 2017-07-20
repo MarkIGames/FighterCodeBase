@@ -277,8 +277,8 @@ function gameClass() {
 		
 		$.each( localBulletArray, function( key, object ) {
 			object.translateZ( delta * -10128 );
-			console.log(delta);
-			detectCollision( object );
+			//console.log(delta);
+			//detectCollision( object );
 		});
 			
 		// expose the rotation vector for convenience
